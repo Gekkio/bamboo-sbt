@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fi.jawsy</groupId>
+	<artifactId>bamboo-sbt</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+
+	<url>http://github.com/Gekkio/bamboo-sbt</url>
+	<organization>
+		<name>Jawsy Solutions</name>
+		<url>http://www.jawsy.fi</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<name>bamboo-sbt</name>
+	<description>Adds Simple Build Tool support to Bamboo</description>
+	<packaging>atlassian-plugin</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.atlassian.bamboo</groupId>
+			<artifactId>atlassian-bamboo-core</artifactId>
+			<version>${bamboo.version}</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.6</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.atlassian.maven.plugins</groupId>
+				<artifactId>maven-bamboo-plugin</artifactId>
+				<version>3.2.3</version>
+				<extensions>true</extensions>
+				<configuration>
+					<productVersion>${bamboo.version}</productVersion>
+					<productDataVersion>${bamboo.data.version}</productDataVersion>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<properties>
+		<bamboo.version>2.7.1</bamboo.version>
+		<bamboo.data.version>2.6.1</bamboo.data.version>
+	</properties>
+
+</project>

@@ -1,0 +1,13 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}">
+	<plugin-info>
+		<description>${project.description}</description>
+		<version>${project.version}</version>
+		<vendor name="${project.organization.name}" url="${project.organization.url}" />
+	</plugin-info>
+
+	<builder key="sbt" name="SBT Builder" class="fi.jawsy.bamboo.plugins.sbt.SbtBuilder">
+		<description>An Simple Build Tool Builder</description>
+		<resource type="freemarker" name="edit" location="templates/plugins/builder/sbtBuilderEdit.ftl" />
+		<resource type="freemarker" name="view" location="templates/plugins/builder/sbtBuilderView.ftl" />
+	</builder>
+</atlassian-plugin>
